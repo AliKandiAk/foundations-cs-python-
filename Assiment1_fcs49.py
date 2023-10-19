@@ -90,3 +90,27 @@ print(check)
 pass2="password"
 check2=strg_pass(pass2)
 print(check2)# weak pass
+#ex6  
+def is_valid_ipv4(ip):
+    octets = ip.split('.')
+
+    if len(octets) != 4:
+        return "Invalid: IP address must have exactly 4 octets."
+
+    for i in octets:
+        if not i.isdigit():
+            return "(Octets must be integers.)"
+
+        value = int(i)
+        if value < 0 or value > 255:
+            return "(Octet value out of range)."
+
+        if len(i) > 1 and i[0] == '0':
+            return "(Leading zeros in octet.)"
+
+    return "Valid IPv4 address."
+
+
+ip_address = input("Enter an IPv4 address: ")
+result = is_valid_ipv4(ip_address)
+print(result)
